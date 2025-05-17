@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار التطبيق</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #009688;
+        }
+        .btn {
+            background-color: #009688;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اختبار تطبيق المحاسبة</h1>
+        <p>هذه صفحة اختبار للتأكد من أن الخادم المحلي يعمل بشكل صحيح.</p>
+        
+        <button class="btn" id="openAppBtn">فتح التطبيق</button>
+        <button class="btn" id="testDbBtn">اختبار قاعدة البيانات</button>
+        
+        <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid #ddd; display: none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('openAppBtn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        document.getElementById('testDbBtn').addEventListener('click', function() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'جاري اختبار قاعدة البيانات...';
+            
+            // محاولة تحميل ملف database.js
+            const script = document.createElement('script');
+            script.src = 'database.js';
+            script.onload = function() {
+                resultDiv.innerHTML += '<br>تم تحميل ملف database.js بنجاح.';
+                
+                // محاولة تهيئة قاعدة البيانات
+                if (window.db && window.db.init) {
+                    window.db.init()
+                        .then(() => {
+                            resultDiv.innerHTML += '<br>تم تهيئة قاعدة البيانات بنجاح.';
+                            
+                            // محاولة الحصول على المنتجات
+                            return window.db.products.getAll();
+                        })
+                        .then(products => {
+                            resultDiv.innerHTML += `<br>تم الحصول على ${products.length} منتج من قاعدة البيانات.`;
+                        })
+                        .catch(error => {
+                            resultDiv.innerHTML += `<br>خطأ: ${error.message}`;
+                        });
+                } else {
+                    resultDiv.innerHTML += '<br>خطأ: كائن قاعدة البيانات غير متوفر.';
+                }
+            };
+            script.onerror = function() {
+                resultDiv.innerHTML += '<br>خطأ: فشل في تحميل ملف database.js.';
+            };
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
