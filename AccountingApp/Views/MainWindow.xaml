@@ -1,0 +1,203 @@
+<Window x:Class="AccountingApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingApp.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Abu Sleman Accounting System" 
+        Height="768" 
+        Width="1366"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="{StaticResource BackgroundColorBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Side Menu -->
+        <Grid Grid.Column="0" Background="{StaticResource PrimaryColorBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <!-- App Logo and Title -->
+            <StackPanel Grid.Row="0" Margin="20">
+                <materialDesign:PackIcon Kind="AccountBalance" 
+                                        Width="48" 
+                                        Height="48" 
+                                        Foreground="White"
+                                        HorizontalAlignment="Center"/>
+                <TextBlock Text="Abu Sleman" 
+                           Foreground="White" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center"
+                           Margin="0,8,0,0"/>
+                <TextBlock Text="Accounting System" 
+                           Foreground="LightGray" 
+                           FontSize="14" 
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,8"/>
+            </StackPanel>
+
+            <!-- Menu Items -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="0,0,0,20">
+                    <Button x:Name="BtnDashboard" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Dashboard" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnProducts" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Package" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Products" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnCustomers" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountMultiple" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Customers" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnSuppliers" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="TruckDelivery" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Suppliers" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnSales" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CartOutline" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Sales" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnPurchases" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ShoppingOutline" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Purchases" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnAccounting" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ChartLine" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Accounting" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnReports" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileDocument" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reports" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="BtnSettings" Style="{StaticResource MaterialDesignFlatButton}" 
+                            Foreground="White" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" Padding="32,8,8,8"
+                            Click="MenuButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Cog" Width="24" Height="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="Settings" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <!-- User Info -->
+            <Grid Grid.Row="2" Background="#1AFFFFFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Border Grid.Column="0" Width="40" Height="40" CornerRadius="20" Background="White" Margin="10">
+                    <materialDesign:PackIcon Kind="Account" Width="24" Height="24" 
+                                             HorizontalAlignment="Center" VerticalAlignment="Center"
+                                             Foreground="{StaticResource PrimaryColorBrush}"/>
+                </Border>
+                
+                <StackPanel Grid.Column="1" Margin="0,10,10,10" VerticalAlignment="Center">
+                    <TextBlock x:Name="TxtUserName" Text="Admin User" Foreground="White" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="TxtUserRole" Text="Administrator" Foreground="LightGray" FontSize="12"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Title Bar -->
+            <Grid Grid.Row="0" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock x:Name="TxtPageTitle" Grid.Column="0" Text="Dashboard" 
+                           FontSize="24" FontWeight="Medium" Margin="24,0,0,0"
+                           VerticalAlignment="Center"/>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="24,0">
+                    <Button Style="{StaticResource MaterialDesignIconButton}" ToolTip="Notifications">
+                        <materialDesign:PackIcon Kind="BellOutline" Width="24" Height="24"/>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignIconButton}" ToolTip="Help">
+                        <materialDesign:PackIcon Kind="HelpCircleOutline" Width="24" Height="24"/>
+                    </Button>
+                    <Button x:Name="BtnLogout" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Logout" Click="BtnLogout_Click">
+                        <materialDesign:PackIcon Kind="LogoutVariant" Width="24" Height="24"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            
+            <!-- Page Content -->
+            <Frame x:Name="MainFrame" Grid.Row="1" 
+                   NavigationUIVisibility="Hidden" 
+                   Background="{StaticResource BackgroundColorBrush}"
+                   Padding="24"/>
+        </Grid>
+    </Grid>
+</Window>
